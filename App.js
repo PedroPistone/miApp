@@ -1,20 +1,28 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers';
 import CarGalleryScreen from './CarGalleryScreen';
 import AddCarScreen from './AddCarScreen';
 import CarDetailScreen from './CarDetailScreen';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+const store = createStore(rootReducer);
 
-export default function App() {
+const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="CarGallery" component={CarGalleryScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="AddCar" component={AddCarScreen} options={{ title: 'Agregar Auto' }} />
-        <Stack.Screen name="CarDetail" component={CarDetailScreen} options={{ title: 'Detalles del Auto' }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="CarGallery" component={CarGalleryScreen} />
+          <Tab.Screen name="AddCar" component={AddCarScreen} />
+          <Tab.Screen name="CarDetail" component={CarDetailScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
-}
+};
+
+export default App;

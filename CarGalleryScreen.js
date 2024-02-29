@@ -6,6 +6,7 @@ const CarGalleryScreen = ({ navigation }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredCars, setFilteredCars] = useState([]);
 
+  
   const cars = [
     { id: 1, brand: 'Toyota', model: 'Corolla', image: require('./assets/toyota_corolla.jpg'), year: 2021, color: 'Rojo', price: 25000, mileage: '30,000 km', condition: 'Usado' },
     { id: 2, brand: 'Honda', model: 'Civic', image: require('./assets/honda_civic.jpg'), year: 2020, color: 'Azul', price: 22000, mileage: '20,000 km', condition: 'Nuevo' },

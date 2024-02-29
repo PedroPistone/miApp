@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 const CarDetailScreen = ({ route }) => {
-const { car } = route.params;
+const car = route.params?.car;
+
 
 return (
     <View style={styles.container}>
