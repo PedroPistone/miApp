@@ -1,8 +1,9 @@
+// App.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import rootReducer from './reducers';
 import CarGalleryScreen from './CarGalleryScreen';
 import AddCarScreen from './AddCarScreen';

@@ -6,6 +6,8 @@ import AddCarScreen from './AddCarScreen';
 import CarDetailScreen from './CarDetailScreen';
 
 const Stack = createStackNavigator();
+<Tab.Screen name="CarDetail" component={CarDetailScreen} />
+
 
 const Navigation = () => {
   return (

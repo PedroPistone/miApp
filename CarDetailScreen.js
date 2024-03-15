@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 const CarDetailScreen = ({ route }) => {
 const car = route.params?.car;
+navigation.navigate('CarDetail', { car: carData });
 
 
 return (
