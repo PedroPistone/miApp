@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   carImage: {
-    width: '100%',
+    width: '101%',
     height: 200,
     marginBottom: 10,
     borderRadius: 8,
