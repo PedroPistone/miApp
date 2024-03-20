@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import { Camera } from 'expo-camera';
 
 const AddCarScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
+  const [photoUri, setPhotoUri] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === 'granted');
     })();
   }, []);
@@ -16,7 +17,7 @@ const AddCarScreen = () => {
   const takePicture = async () => {
     if (cameraRef) {
       const photo = await cameraRef.takePictureAsync();
-      console.log(photo);
+      setPhotoUri(photo.uri);
     }
   };
 
@@ -24,12 +25,13 @@ const AddCarScreen = () => {
     return <View />;
   }
   if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
+    return <Text>No tienes acceso a la cámara</Text>;
   }
 
   return (
     <View style={styles.container}>
       <Camera style={styles.camera} ref={(ref) => setCameraRef(ref)} type={Camera.Constants.Type.back} />
+      {photoUri && <Image source={{ uri: photoUri }} style={styles.photo} />}
       <Button title="Tomar Foto" onPress={takePicture} />
     </View>
   );
@@ -42,6 +44,11 @@ const styles = StyleSheet.create({
   },
   camera: {
     flex: 1,
+  },
+  photo: {
+    width: '100%',
+    height: 300,
+    resizeMode: 'cover',
   },
 });
 

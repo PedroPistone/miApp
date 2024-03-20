@@ -2,11 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 const CarDetailScreen = ({ route }) => {
-const car = route.params?.car;
-navigation.navigate('CarDetail', { car: carData });
+  const car = route.params?.car;
 
-
-return (
+  return (
     <View style={styles.container}>
       <Image source={car.image} style={styles.carImage} />
       <Text style={styles.carName}>{car.brand} - {car.model}</Text>
