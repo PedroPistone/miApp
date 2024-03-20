@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   photo: {
-    width: '100%',
+    width: '101%',
     height: 300,
     resizeMode: 'cover',
   },
